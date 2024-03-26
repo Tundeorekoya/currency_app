@@ -75,13 +75,13 @@ a:hover {
 
 @media screen and (max-width: 1300px) {
   .main {
-    margin-left: 50px;
+    margin-left: 10px;
   }
 }
 
 @media screen and (max-width: 1170px) {
   .main {
-    margin-left: 50px;
+    margin-left: 10px;
   }
 }
 
@@ -128,7 +128,7 @@ a:hover {
     font-size: 1.4rem !important;
   }
   .show-more {
-    font-size: 1.3rem !important;
+    font-size: 1rem !important;
   }
 }
 

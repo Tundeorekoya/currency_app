@@ -1,8 +1,9 @@
 import millify from "millify"
 import { Link } from "react-router-dom"
-import { Typography, Statistic, Row, Col, Card } from "antd"
+import { Typography, Statistic, Row, Col, Card, Spin } from "antd"
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { News, Cryptocurrency } from "../components"
+import Loader from "./Loader";
 
 
 const { Title } = Typography
@@ -10,13 +11,12 @@ const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery()
   const globalStat = data?.data?.stats
   if (isFetching) {
-    return 'Loading....'
+    return <div className="LoaderPage"><Loader /></div>
   }
   console.log(data)
 
   return (
     <>
-      
       <Title level={2} className="heading">Global Crypto Statistic</Title>
       <Row gutter={[16, 16]}>
         <Col span={6}  > <Card hoverable ><Statistic value={globalStat.totalCoins} title="Total Cryptocurrencies" /></Card>
@@ -27,10 +27,10 @@ const Homepage = () => {
         <Col span={6} ><Card hoverable><Statistic value={millify(globalStat.totalMarkets)} title="Total Market" /></Card></Col>
       </Row>
       <div className="home-heading-container">
-        <Title level={2} className="home-title">Top 10 CryptoCurrency in The World</Title>
+        <Title level={2} className="home-title">Top 50 CryptoCurrency In The World</Title>
         <Title level={4} className="show-more" style={{ marginRight: "1rem" }}><Link to="./Cryptocurrency">Show more</Link></Title>
       </div>
-      <Cryptocurrency />
+      <Cryptocurrency simplified />
       <div className="home-heading-container">
         <Title level={2} className="home-title">Latest Crypto News</Title>
         <Title level={4} className="show-more" style={{ marginRight: "1rem" }}><Link to="./News">Show More</Link></Title>
